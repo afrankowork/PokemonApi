@@ -95,7 +95,7 @@ function displayPokemon (info){
         pokeHpBar.setAttribute('aria-valuenow', `${info.stats[0].base_stat}`);
         pokeHpBar.setAttribute('aria-valuemin','0');
         pokeHpBar.setAttribute('aria-valuemax','100');
-        pokeHpBar.innerText = `${info.stats[0].base_stat}%`;
+        pokeHpBar.innerText = `${info.stats[0].base_stat}`;
         pokeHP.innerText = 'HP: ';
     
         info.types.length > 1 ? pokeType.innerText = 'Types: ' + info.types[0].type.name + ' ' + info.types[1].type.name : pokeType.innerText = 'Type: ' + info.types[0].type.name;
@@ -130,7 +130,9 @@ function nextPage(e) {
     pageNumber += 1;
 
     pageNumber > 1 ? btnPrev.hidden = false : btnPrev.hidden = true;
+    
     fetchPokemon(e);
+    
 };
 
 function prevPage(e){
@@ -138,5 +140,6 @@ function prevPage(e){
     pageNumber -= 1;
     pageNumber > 1 ? btnPrev.hidden = false : btnPrev.hidden = true;
     pokeUrl = prevUrl;
+    
     fetchPokemon(e);
 }
